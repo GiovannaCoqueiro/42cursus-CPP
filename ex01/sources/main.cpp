@@ -1,10 +1,5 @@
 #include "PhoneBook.hpp"
 
-void addContacts(PhoneBook *phonebook)
-{
-    int i = PhoneBook::phonebook.getIndex();
-}
-
 int main(void) {
     std::string prompt = "";
     PhoneBook phonebook = PhoneBook();
@@ -13,9 +8,9 @@ int main(void) {
         std::cout << "Enter command: ";
         std::cin >> prompt;
         if (prompt == "ADD")
-            addContact(&phonebook);
-        else if (prompt == "SEARCH")
-            searchContact(phonebook);
+            phonebook.addContact();
+        // else if (prompt == "SEARCH")
+        //     phonebook.searchContact(phonebook);
         else if (prompt == "EXIT")
             break;
         else

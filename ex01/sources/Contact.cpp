@@ -34,21 +34,50 @@ std::string Contact::getDarkestSecret() const {
 }
 
 void Contact::setFirstName(std::string firstName) {
-    this->_firstName = firstName;
+    _firstName = firstName;
 }
 
 void Contact::setLastName(std::string lastName) {
-    this->_lastName = lastName;
+    _lastName = lastName;
 }
 
 void Contact::setNickname(std::string nickname) {
-    this->_nickname = nickname;
+    _nickname = nickname;
 }
 
 void Contact::setPhone(std::string phone) {
-    this->_phone = phone;
+    _phone = phone;
 }
 
 void Contact::setDarkestSecret(std::string darkestSecret) {
-    this->_darkestSecret = darkestSecret;
+    _darkestSecret = darkestSecret;
+}
+
+static void truncateInfo(std::string info) {
+    int length = info.size();
+
+    if (length > 10) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 9) {
+                std::cout << ".";
+                return ;
+            }
+            std::cout << info[i];
+        }
+    } else {
+        std::cout << std::right;
+        for (int i = 0; i < 10 - length; i++)
+            std::cout << " ";
+        std::cout << info;
+    }
+}
+
+void Contact::showPreInfo() {
+    std::cout << "|";
+    truncateInfo(_firstName);
+    std::cout << "|";
+    truncateInfo(_lastName);
+    std::cout << "|";
+    truncateInfo(_nickname);
+    std::cout << "|" << std::endl;
 }
