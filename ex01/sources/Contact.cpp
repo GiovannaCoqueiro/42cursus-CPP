@@ -81,3 +81,11 @@ void Contact::showPreInfo() {
     truncateInfo(_nickname);
     std::cout << "|" << std::endl;
 }
+
+void Contact::displayInfo() {
+    std::cout << "First name: " << _firstName << std::endl;
+    std::cout << "Last name: " << _lastName << std::endl;
+    std::cout << "Nickname: " << _nickname << std::endl;
+    std::cout << "Phone: " << _phone << std::endl;
+    std::cout << "Darkest secret: " << _darkestSecret << std::endl;
+}

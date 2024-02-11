@@ -63,6 +63,33 @@ void PhoneBook::addContact() {
     setIndex(getIndex() + 1);
 }
 
-// void PhoneBook::searchContact(PhoneBook phonebook) {
+static int ctoi(char digit) {
+    return (digit - '0');
+}
 
-// }
+void PhoneBook::searchContact() {
+    char digit;
+    int index;
+
+    for (int i = 0; i < getLength(); i++) {
+        std::cout << i << " ";
+        _contacts[i].showPreInfo();
+        std::cout << std::endl;
+    }
+
+    std::cout << "Enter the index of a contact to show more info: ";
+    std::cin >> digit;
+
+    if (!isdigit(digit)) {
+        std::cout << "Not a digit" << std::endl;
+        return ;
+    }
+
+    index = ctoi(digit);
+    if (index >= getLength())
+    {
+        std::cout << "Out of range" << std::endl;
+        return ;
+    }
+    _contacts[index].displayInfo();
+}
