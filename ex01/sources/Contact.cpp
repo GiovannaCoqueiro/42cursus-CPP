@@ -34,23 +34,23 @@ std::string Contact::getDarkestSecret() const {
 }
 
 void Contact::setFirstName(std::string firstName) {
-    _firstName = firstName;
+    this->_firstName = firstName;
 }
 
 void Contact::setLastName(std::string lastName) {
-    _lastName = lastName;
+    this->_lastName = lastName;
 }
 
 void Contact::setNickname(std::string nickname) {
-    _nickname = nickname;
+    this->_nickname = nickname;
 }
 
 void Contact::setPhone(std::string phone) {
-    _phone = phone;
+    this->_phone = phone;
 }
 
 void Contact::setDarkestSecret(std::string darkestSecret) {
-    _darkestSecret = darkestSecret;
+    this->_darkestSecret = darkestSecret;
 }
 
 static void truncateInfo(std::string info) {

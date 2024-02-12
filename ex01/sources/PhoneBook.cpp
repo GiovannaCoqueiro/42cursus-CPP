@@ -20,22 +20,21 @@ int PhoneBook::getIndex() const {
 }
 
 void PhoneBook::setContact(Contact contact) {
-    int index = getIndex();
-    _contacts[index] = contact;
+    this->_contacts[getIndex()] = contact;
 }
 
 void PhoneBook::setLength(int length) {
     if (_length == 8)
         return ;
     else
-        _length = length;
+        this->_length = length;
 }
 
 void PhoneBook::setIndex(int index) {
-    if (_index == 8)
-        _index = 0;
+    if (index == 8)
+        this->_index = 0;
     else
-        _index = index;
+        this->_index = index;
 }
 
 void PhoneBook::addContact() {
@@ -58,9 +57,14 @@ void PhoneBook::addContact() {
     }
 
     Contact contact(firstName, lastName, nickname, phone, darkestSecret);
+    std::cout << "instacia" << std::endl;
+    std::cout << getIndex() << std::endl;
+    std::cout << getLength() << std::endl;
     setContact(contact);
     setLength(getLength() + 1);
     setIndex(getIndex() + 1);
+    std::cout << getIndex() << std::endl;
+    std::cout << getLength() << std::endl;
 }
 
 static int ctoi(char digit) {
@@ -86,8 +90,7 @@ void PhoneBook::searchContact() {
     }
 
     index = ctoi(digit);
-    if (index >= getLength())
-    {
+    if (index >= getLength()) {
         std::cout << "Out of range" << std::endl;
         return ;
     }
