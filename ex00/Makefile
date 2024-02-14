@@ -15,6 +15,9 @@ NAME: $(OBJS)
 %.o: %.cpp
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+run: all
+	./$(NAME)
+
 val: all
 	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME)
 
@@ -28,4 +31,4 @@ fclean:	clean
 
 re:	fclean all
 
-.PHONY: all clean fclean re val
+.PHONY: all clean fclean re run val
