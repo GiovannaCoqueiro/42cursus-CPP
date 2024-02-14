@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 17:25:40 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/02/11 17:45:23 by gcoqueir         ###   ########.fr       */
+/*   Created: 2024/02/14 11:29:32 by gcoqueir          #+#    #+#             */
+/*   Updated: 2024/02/14 13:26:26 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,22 @@ void PhoneBook::setIndex(int index) {
         this->_index = index;
 }
 
+static bool isAlphaString(std::string str) {
+    for (size_t i = 0; i < str.size(); i++) {
+        if (!std::isalpha(str[i]))
+            return false;
+    }
+    return true;
+}
+
+static bool isDigitString(std::string str) {
+    for (size_t i = 0; i < str.size(); i++) {
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return true;
+}
+
 void PhoneBook::addContact() {
     std::string firstName = "", lastName = "", nickname = "", phone = "", darkestSecret = "";
 
@@ -63,20 +79,19 @@ void PhoneBook::addContact() {
     std::cout << "Enter Darkest Secret: ";
     std::cin >> darkestSecret;
 
+    if (!isAlphaString(firstName) || !isAlphaString(lastName) || !isDigitString(phone)) {
+        std::cout << "Invalid info" << std::endl;
+        return ;
+    }
     if (firstName.empty() || lastName.empty() || nickname.empty() || phone.empty() || darkestSecret.empty()) {
         std::cout << "You left blank spaces" << std::endl;
         return ;
     }
 
     Contact contact(firstName, lastName, nickname, phone, darkestSecret);
-    std::cout << "instacia" << std::endl;
-    std::cout << getIndex() << std::endl;
-    std::cout << getLength() << std::endl;
     setContact(contact);
     setLength(getLength() + 1);
     setIndex(getIndex() + 1);
-    std::cout << getIndex() << std::endl;
-    std::cout << getLength() << std::endl;
 }
 
 static int ctoi(char digit) {
