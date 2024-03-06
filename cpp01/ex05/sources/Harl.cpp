@@ -10,9 +10,13 @@ void Harl::complain(std::string level) {
     void (Harl::*methods[4])(void) = {&Harl::debug,  &Harl::info, &Harl::warning, &Harl::error};
 
     for (int i = 0; i < 4; i++) {
-        if (usage[i] == level)
+        if (usage[i] == level) {
             (this->*methods[i])();
+            return ;
+        }
     }
+
+    std::cout << "Unknown level." << std::endl;
 }
 
 void Harl::debug() {
