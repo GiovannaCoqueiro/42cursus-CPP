@@ -8,7 +8,6 @@ Fixed::Fixed() {
 Fixed::Fixed(int const num) {
     std::cout << "Int constructor called" << std::endl;
     _rawBits = num << _fractBits;
-
 }
 
 Fixed::Fixed(float const num) {
