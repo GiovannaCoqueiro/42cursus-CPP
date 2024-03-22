@@ -3,8 +3,8 @@
 #include "WrongCat.hpp"
 
 int main() {
-    const Animal* cat = new Cat();
-    const Animal* dog = new Dog();
+    const AAnimal* cat = new Cat();
+    const AAnimal* dog = new Dog();
 
     std::cout << "----------xx----------xx----------xx----------" << std::endl;
 

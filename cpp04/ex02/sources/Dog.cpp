@@ -1,12 +1,12 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal() {
+Dog::Dog() : AAnimal() {
     setType("Dog");
 	_brain = new Brain();
     std::cout << "Dog has been constructed." << std::endl;
 }
 
-Dog::Dog(const Dog& rhs) : Animal(rhs) {
+Dog::Dog(const Dog& rhs) : AAnimal(rhs) {
 	_brain = new Brain();
     *this = rhs;
 }

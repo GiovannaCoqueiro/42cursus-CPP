@@ -1,12 +1,12 @@
 #include "Cat.hpp"
 
-Cat::Cat() : Animal() {
+Cat::Cat() : AAnimal() {
     setType("Cat");
 	_brain = new Brain();
     std::cout << "Cat has been constructed." << std::endl;
 }
 
-Cat::Cat(const Cat& rhs) : Animal(rhs) {
+Cat::Cat(const Cat& rhs) : AAnimal(rhs) {
 	_brain = new Brain();
     *this = rhs;
 }
