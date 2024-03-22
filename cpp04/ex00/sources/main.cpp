@@ -9,7 +9,7 @@ int main() {
 
     std::cout << dog->getType() << " " << std::endl;
     std::cout << cat->getType() << " " << std::endl;
-    cat->makeSound(); //will output the cat sound!
+    cat->makeSound();
     dog->makeSound();
     animal->makeSound();
 
