@@ -6,7 +6,7 @@
 #    By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 12:05:18 by gcoqueir          #+#    #+#              #
-#    Updated: 2024/03/25 12:05:19 by gcoqueir         ###   ########.fr        #
+#    Updated: 2024/03/25 14:29:07 by gcoqueir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,9 @@ mkdir_obj:
 $(NAME): $(addprefix $(OBJ_DIR), $(OBJS))
 	@$(CC) $(addprefix $(OBJ_DIR), $(OBJS)) -o $(NAME)
 	@echo "\033[0;32mSUCCESS!\033[0m"
+
+val: all
+	valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 clean:
 	@$(RM) $(addprefix $(OBJ_DIR), $(OBJS))
