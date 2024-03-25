@@ -6,11 +6,11 @@
 #    By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/14 16:14:24 by gcoqueir          #+#    #+#              #
-#    Updated: 2024/02/14 16:17:32 by gcoqueir         ###   ########.fr        #
+#    Updated: 2024/03/25 11:46:49 by gcoqueir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = brain
+NAME = main
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
