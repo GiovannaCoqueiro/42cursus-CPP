@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 12:09:10 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:09:11 by gcoqueir         ###   ########.fr       */
+/*   Created: 2024/03/25 12:08:34 by gcoqueir          #+#    #+#             */
+/*   Updated: 2024/04/05 13:34:59 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ WrongAnimal::WrongAnimal() {
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& rhs) {
+    std::cout << _type << " copied."  << std::endl;
     *this = rhs;
 }
 

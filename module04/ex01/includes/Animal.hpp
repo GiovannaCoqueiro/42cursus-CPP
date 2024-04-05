@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:08:43 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:44 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:03:53 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ class Animal {
         void setType(std::string type);
 
         virtual void makeSound() const;
-        virtual Brain* getBrain() const = 0;
 };
 
 #endif

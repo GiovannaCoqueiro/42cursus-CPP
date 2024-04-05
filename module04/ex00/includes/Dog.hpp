@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:08:17 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:18 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:39:23 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Dog : public Animal {
         ~Dog();
         Dog& operator=(const Dog& rhs);
         
-        void makeSound() const;
+        virtual void makeSound() const;
 };
 
 #endif

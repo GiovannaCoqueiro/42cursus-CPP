@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:08:28 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:29 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:25:44 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ Cat::Cat() : Animal() {
 }
 
 Cat::Cat(const Cat& rhs) : Animal(rhs) {
+    std::cout << _type << " copied." << std::endl;
     *this = rhs;
 }
 

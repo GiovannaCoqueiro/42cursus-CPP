@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:09:08 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:09:09 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/05 14:06:53 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 #include "WrongCat.hpp"
 
 int main() {
-    const Animal* cat = new Cat();
-    const Animal* dog = new Dog();
-
+    Cat* cat = new Cat();
+    Dog* dog = new Dog();
+	
     std::cout << "----------xx----------xx----------xx----------" << std::endl;
 
     for (int i = 0; i < 101; i++) {
-        cat->getBrain()->setIdea(i, "destroy couch");
+        cat->getBrain()->setIdea(i, "sleep on keyboard");
         dog->getBrain()->setIdea(i, "get my tail");
     }
 

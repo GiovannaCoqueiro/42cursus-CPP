@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:08:47 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/03/25 12:08:48 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/05 13:43:49 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Cat : public Animal {
         
         Brain* getBrain() const;
 
-        void makeSound() const;
+        virtual void makeSound() const;
 };
 
 #endif
