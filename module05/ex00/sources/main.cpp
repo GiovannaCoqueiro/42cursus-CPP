@@ -6,97 +6,119 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:03 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/05 18:22:16 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:52:58 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-namespace tests {
-	void DefaultTest(void) {
-		std::cout<< "Default class tests ========================" << std::endl;
-		try {
-			Bureaucrat b1;
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-	void BureaucratTest(void) {
-		std::cout << "Parametric class tests ====================" << std::endl;
-		try {
-			Bureaucrat b1("Luiz", 1);
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-	void operatorTest(void) {
-		std::cout << "Operator class tests =======================" << std::endl;
-		try {
-			Bureaucrat b1("Blaine", 1);
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-	void increaseDecreaseTest(void) {
-		std::cout << "Increase/Decrease class tests ==============" << std::endl;
-		try {
-			Bureaucrat b1("Luiz", rand() % 150 + 1);
-			std::cout << b1 << std::endl;
-			std::cout << "Increasing grade" << std::endl;
-			b1.increaseGrade();
-			std::cout << b1 << std::endl;
-			std::cout << "Decreasing grade" << std::endl;
-			b1.decreaseGrade();
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-	void copyTest(void) {
-		std::cout << "Copy class tests ===========================" << std::endl;
-		try {
-			Bureaucrat b1("Luiz", 1);
-			std::cout << "Bureaucrat 1: " <<b1 << std::endl;
-			std::cout << "Bureaucrat 1 address: " << &b1 << std::endl;
-			Bureaucrat b2(b1);
-			std::cout << "Bureaucrat 2: " << b2 << std::endl;
-			std::cout << "Bureaucrat 2 address: " << &b2 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-	void exceptionTest(void) {
-		std::cout << "Exception class tests ======================" << std::endl;
-		try {
-			std::cout << "Grade 0 Bureaucrat" << std::endl;
-			Bureaucrat b1("Luiz", 0);
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-		try {
-			std::cout << "Grade 151 Bureaucrat" << std::endl;
-			Bureaucrat b1("Luiz", 151);
-			std::cout << b1 << std::endl;
-		} catch (std::exception &e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
+// namespace tests {
+// 	void DefaultTest(void) {
+// 		std::cout<< "Default class tests ========================" << std::endl;
+// 		try {
+// 			Bureaucrat b1;
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
+// 	void BureaucratTest(void) {
+// 		std::cout << "Parametric class tests ====================" << std::endl;
+// 		try {
+// 			Bureaucrat b1("Luiz", 1);
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
+// 	void operatorTest(void) {
+// 		std::cout << "Operator class tests =======================" << std::endl;
+// 		try {
+// 			Bureaucrat b1("Blaine", 1);
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
+// 	void increaseDecreaseTest(void) {
+// 		std::cout << "Increase/Decrease class tests ==============" << std::endl;
+// 		try {
+// 			Bureaucrat b1("Luiz", rand() % 150 + 1);
+// 			std::cout << b1 << std::endl;
+// 			std::cout << "Increasing grade" << std::endl;
+// 			b1.increaseGrade();
+// 			std::cout << b1 << std::endl;
+// 			std::cout << "Decreasing grade" << std::endl;
+// 			b1.decreaseGrade();
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
+// 	void copyTest(void) {
+// 		std::cout << "Copy class tests ===========================" << std::endl;
+// 		try {
+// 			Bureaucrat b1("Luiz", 1);
+// 			std::cout << "Bureaucrat 1: " <<b1 << std::endl;
+// 			std::cout << "Bureaucrat 1 address: " << &b1 << std::endl;
+// 			Bureaucrat b2(b1);
+// 			std::cout << "Bureaucrat 2: " << b2 << std::endl;
+// 			std::cout << "Bureaucrat 2 address: " << &b2 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
+// 	void exceptionTest(void) {
+// 		std::cout << "Exception class tests ======================" << std::endl;
+// 		try {
+// 			std::cout << "Grade 0 Bureaucrat" << std::endl;
+// 			Bureaucrat b1("Luiz", 0);
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 		try {
+// 			std::cout << "Grade 151 Bureaucrat" << std::endl;
+// 			Bureaucrat b1("Luiz", 151);
+// 			std::cout << b1 << std::endl;
+// 		} catch (std::exception &e) {
+// 			std::cout << e.what() << std::endl;
+// 		}
+// 	}
 
 
-}
+// }
 
-int main(void) {
-	std::cout << "==============Bureaucrat tests==============" << std::endl;
-	tests::DefaultTest();
-	tests::BureaucratTest();
-	tests::operatorTest();
-	tests::increaseDecreaseTest();
-	tests::copyTest();
-	tests::exceptionTest();
+// int main(void) {
+// 	std::cout << "==============Bureaucrat tests==============" << std::endl;
+// 	tests::DefaultTest();
+// 	tests::BureaucratTest();
+// 	tests::operatorTest();
+// 	tests::increaseDecreaseTest();
+// 	tests::copyTest();
+// 	tests::exceptionTest();
 
-	return (0);
+// 	return (0);
+// }
+
+int main() {
+    try {
+        Bureaucrat b1("Sage", 10);
+        std::cout << b1 << std::endl;
+
+        b1.incrementGrade();
+        std::cout << b1 << std::endl;
+
+        b1.decrementGrade();
+        std::cout << b1 << std::endl;
+
+        Bureaucrat b2("Phoenix", 150);
+        std::cout << b2 << std::endl;
+
+		Bureaucrat b3("Jett", 160);
+    } catch (std::exception& e) {
+        std::cout << "Exception: " << e.what() << std::endl;
+    }
+
+    return (0);
 }

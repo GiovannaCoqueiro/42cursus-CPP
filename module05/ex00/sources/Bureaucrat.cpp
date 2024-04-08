@@ -6,26 +6,26 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:00 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/05 18:21:27 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:46:50 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() {
-	std::cout << "Default Bureaucrat has been constructed." << std::endl;
+	std::cout << "Unknown bureaucrat has been constructed." << std::endl;
 	const_cast<std::string&>(_name) = "Unknown";
 	_grade = (rand() % 150) + 1;
 }
 
 Bureaucrat::Bureaucrat(std::string const name, int grade)
 throw(GradeTooHighException, GradeTooLowException) {
-	std::cout << "Bureaucrat has been constructed." << std::endl;
-    const_cast<std::string&>(_name) = name;
 	if (grade < 1)
 		throw GradeTooHighException();
 	else if (grade > 150)
 		throw GradeTooLowException();
+    const_cast<std::string&>(_name) = name;
+	std::cout << "Bureaucrat " << _name << " has been constructed." << std::endl;
     _grade = grade;
 }
 
@@ -62,14 +62,14 @@ int Bureaucrat::getGrade() const {
 	return _grade;
 }
 
-void Bureaucrat::increaseGrade() {
-	if (_grade - 1 < 1)
+void Bureaucrat::incrementGrade() {
+	if (_grade == 1)
 		throw GradeTooHighException();
 	_grade--;
 }
 
-void Bureaucrat::decreaseGrade() {
-	if (_grade + 1 > 150)
+void Bureaucrat::decrementGrade() {
+	if (_grade == 150)
 		throw GradeTooLowException();
 	_grade++;
 }

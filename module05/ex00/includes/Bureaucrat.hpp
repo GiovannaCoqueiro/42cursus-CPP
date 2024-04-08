@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:44:56 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/05 18:04:10 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 11:41:12 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BUREAUCRAT_HPP
 
 #include <iostream>
+#include <string>
 #include <cstdlib>
 
 class Bureaucrat {
@@ -39,11 +40,11 @@ class Bureaucrat {
 		~Bureaucrat();
 		Bureaucrat& operator=(const Bureaucrat& rhs);
 
-		const std::string getName() const;
 		int getGrade() const;
+		const std::string getName() const;
 
-		void increaseGrade();
-		void decreaseGrade();
+		void incrementGrade();
+		void decrementGrade();
 		
 };
 
