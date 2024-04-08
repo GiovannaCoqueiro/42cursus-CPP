@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:47 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 16:06:14 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:01:15 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 class AForm;
 
-class ShrubberyCreationForm : public AForm{
+class ShrubberyCreationForm : public AForm {
 	private:
 		const std::string _target;
 
@@ -32,7 +32,5 @@ class ShrubberyCreationForm : public AForm{
         void execute(Bureaucrat const & executor) const
 			throw(GradeTooLowException,NotSignedException);
 };
-
-std::ostream& operator<<(std::ostream& lhs, const ShrubberyCreationForm& rhs);
 
 #endif

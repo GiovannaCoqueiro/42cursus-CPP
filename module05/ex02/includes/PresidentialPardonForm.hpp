@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:39 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 15:37:04 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 17:01:10 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class AForm;
 
-class PresidentialPardonForm : public AForm{
+class PresidentialPardonForm : public AForm {
 	private:
 		const std::string _target;
 
@@ -31,7 +31,5 @@ class PresidentialPardonForm : public AForm{
         void execute(Bureaucrat const & executor) const
 			throw(GradeTooLowException,NotSignedException);
 };
-
-std::ostream& operator<<(std::ostream& lhs, const PresidentialPardonForm& rhs);
 
 #endif
