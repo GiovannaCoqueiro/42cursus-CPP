@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:53 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 13:46:36 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:43:54 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ throw(GradeTooHighException, GradeTooLowException) : _name(name), _signed(false)
         throw GradeTooHighException();
     else if (signGrade > 150 || executeGrade > 150)
         throw GradeTooLowException();
-    std::cout << _name << " has been constructed." << std::endl;
+    std::cout << "Form has been constructed." << std::endl;
 }
 
 AForm::AForm(const AForm& rhs) : _name(rhs._name), _signed(rhs._signed), _signGrade(rhs._signGrade), _executeGrade(rhs._executeGrade) {
@@ -44,11 +44,15 @@ AForm& AForm::operator=(const AForm& rhs) {
 }
 
 const char* AForm::GradeTooHighException::what() const throw() {
-	return "grade is too high. The grade must be between 1 and 150.";
+	return "Grade is too high. The grade must be between 1 and 150.";
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-	return "grade is too low. The grade must be between 1 and 150.";
+	return "Grade is too low. The grade must be between 1 and 150.";
+}
+
+const char* AForm::NotSignedException::what() const throw() {
+    return "Form not signed.";
 }
 
 const std::string AForm::getName() const {
@@ -73,6 +77,14 @@ throw(GradeTooLowException) {
 		throw AForm::GradeTooLowException();
 	else
         _signed = true;
+}
+
+void AForm::execute(Bureaucrat const & executor) const
+throw(GradeTooLowException, NotSignedException) {
+	if (_signed == false)
+		throw AForm::NotSignedException();
+	else if (executor.getGrade() > _executeGrade)
+		throw AForm::GradeTooLowException();
 }
 
 std::ostream& operator<<(std::ostream& lhs, const AForm& rhs) {

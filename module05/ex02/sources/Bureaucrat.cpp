@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:50 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 13:45:26 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 16:38:05 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,15 @@ void Bureaucrat::signForm(AForm& form) {
     } catch (const std::exception& e) {
         std::cout << getName() << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
     }
+}
+
+void Bureaucrat::executeForm(AForm const & form) {
+	try {
+		form.execute(*this);
+		std::cout << _name << " executes " << form.getName() << "." << std::endl;
+	} catch (std::exception & e) {
+		std::cout << _name << " couldn't execute " << form.getName() << " because " << e.what() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& lhs, const Bureaucrat& rhs) {

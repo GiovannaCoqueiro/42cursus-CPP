@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:42 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 13:44:51 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:01:49 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ class Bureaucrat {
 
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form& form);
+		void signForm(AForm& form);
+		void executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& lhs, const Bureaucrat& rhs);

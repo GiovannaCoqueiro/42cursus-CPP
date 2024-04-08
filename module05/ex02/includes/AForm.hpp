@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:37 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 13:50:35 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 15:36:47 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class Bureaucrat;
 
 class AForm {
-	protected:
+	private:
 		const std::string _name;
 		bool _signed;
         const int _signGrade;
@@ -38,11 +38,16 @@ class AForm {
 		        virtual const char* what() const throw();
         };
 
+		class NotSignedException : public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+
 		AForm();
 		AForm(std::string const name, int signGrade, int executeGrade)
 			throw(GradeTooHighException, GradeTooLowException);
 		AForm(const AForm& rhs);
-		~AForm();
+		virtual ~AForm();
 		AForm& operator=(const AForm& rhs);
 
         const std::string getName() const;
@@ -51,9 +56,11 @@ class AForm {
         int getExecuteGrade() const;
 
         void beSigned(const Bureaucrat& bureaucrat)
-            throw(GradeTooLowException) = 0;
+			throw(GradeTooLowException);
+		virtual void execute(Bureaucrat const & executor) const
+			throw(GradeTooLowException, NotSignedException) = 0;
 };
 
-std::ostream& operator<<(std::ostream& lhs, const Form& rhs);
+std::ostream& operator<<(std::ostream& lhs, const AForm& rhs);
 
 #endif

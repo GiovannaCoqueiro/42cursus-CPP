@@ -6,7 +6,7 @@
 #    By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/25 16:46:05 by gcoqueir          #+#    #+#              #
-#    Updated: 2024/04/05 14:45:38 by gcoqueir         ###   ########.fr        #
+#    Updated: 2024/04/08 16:29:50 by gcoqueir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBS = ./includes
 OBJ_DIR = objects/
 
 RM = rm -f
-FILES = main.cpp Bureaucrat.cpp Form.cpp PresidentialPardonForm.cpp RobotomyPardonForm.cpp ShrubberyCreationForm.cpp
+FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
