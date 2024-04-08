@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:45:00 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 11:46:50 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/08 12:56:37 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& rhs) {
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destroyed." << std::endl;
+	std::cout << "Bureaucrat " << _name << " destroyed." << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
@@ -47,11 +47,11 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& rhs) {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "This grade is too high. The grade must be between 1 and 150.";
+	return "Bureaucrat grade is too high. The grade must be between 1 and 150.";
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "This grade is too low. The grade must be between 1 and 150.";
+	return "Bureaucrat grade is too low. The grade must be between 1 and 150.";
 }
 
 const std::string Bureaucrat::getName() const {
