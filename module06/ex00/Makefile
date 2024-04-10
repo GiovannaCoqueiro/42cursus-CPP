@@ -9,7 +9,7 @@ LIBS = ./includes
 OBJ_DIR = objects/
 
 RM = rm -f
-FILES = main.cpp ScalarConverter.cpp
+FILES = main.cpp ScalarConverter.cpp Print.cpp TypeDetect.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
