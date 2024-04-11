@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:46:02 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/08 16:28:42 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/04/11 16:51:16 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ throw(GradeTooLowException, NotSignedException) {
 	else if (executor.getGrade() > getExecuteGrade())
 		throw GradeTooLowException();
 
-    std::ofstream outfile((_target + ".replace").c_str(),outfile.out | outfile.trunc);
+    std::ofstream outfile((_target + "_shrubbery").c_str(),outfile.out | outfile.trunc);
 	if (outfile.fail() || outfile.is_open() == false)
 		std::cout << "Couldn't open file." << std::endl;
     else {
