@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Print.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/11 15:13:13 by gcoqueir          #+#    #+#             */
+/*   Updated: 2024/04/11 15:13:37 by gcoqueir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScalarConverter.hpp"
 
 std::string abstractionFloat(double num,std::string const& rest) {
@@ -10,7 +22,7 @@ std::string abstractionFloat(double num,std::string const& rest) {
 
 std::string abstractionChar(int num) {
 	return (num >= 32 && num <= 126 ?
-		std::string("''").insert(1,1, static_cast<char>(num)) : 
+		std::typeinfotypeinfostring("''").insert(1,1, static_cast<char>(num)) : 
 		num < 0 || num > 127 ?
 			std::string("Impossible") : std::string("Non displayable"));
 }
