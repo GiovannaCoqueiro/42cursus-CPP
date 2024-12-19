@@ -6,49 +6,94 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:15:22 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/06/27 19:20:23 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/12/19 18:13:36 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <Array.hpp>
+#include "Array.hpp"
+#include <iostream>
+#include <string>
+#include <cstdlib> 
 
-#define MAX_VAL 750
-int main(int, char**)
-{
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    for (int i = 0; i < MAX_VAL; i++) {
-        const int value = 2;
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+int main() {
+    try {
+        // Test default constructor
+        Array<int> defaultArray;
+        std::cout << "Default array size: " << defaultArray.size() << std::endl;
 
-    for (int i = 0; i < MAX_VAL; i++) {
-        if (mirror[i] != numbers[i]) {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
+        // Test constructor with size
+        Array<int> intArray(5);
+        std::cout << "Array size: " << intArray.size() << std::endl;
+        for (unsigned int i = 0; i < intArray.size(); i++) {
+            intArray[i] = i * 10;
         }
+
+        for (unsigned int i = 0; i < intArray.size(); i++) {
+            std::cout << "intArray[" << i << "]: " << intArray[i] << std::endl;
+        }
+
+        // Test copy constructor
+        Array<int> copyArray = intArray;
+        std::cout << "Copy array size: " << copyArray.size() << std::endl;
+        for (unsigned int i = 0; i < copyArray.size(); i++) {
+            std::cout << "copyArray[" << i << "]: " << copyArray[i] << std::endl;
+        }
+
+        // Test out of bounds exception
+        try {
+            std::cout << intArray[10] << std::endl;
+        } catch (const std::exception &e) {
+            std::cerr << "Exception caught: " << e.what() << std::endl;
+        }
+    } catch (const std::exception &e) {
+        std::cerr << "Unexpected exception: " << e.what() << std::endl;
     }
 
-    try {
-        numbers[-2] = 0;
-    } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
-    try {
-        numbers[MAX_VAL] = 0;
-    } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
-
-    for (int i = 0; i < MAX_VAL; i++)
-        numbers[i] = 4;
-
-    delete [] mirror;//
     return 0;
 }
+
+// #include <Array.hpp>
+// #include <cstdlib> 
+
+// #define MAX_VAL 750
+// int main(int, char**)
+// {
+//     Array<int> numbers(MAX_VAL);
+//     int* mirror = new int[MAX_VAL];
+//     srand(time(NULL));
+//     for (int i = 0; i < MAX_VAL; i++) {
+//         const int value = rand();
+//         numbers[i] = value;
+//         mirror[i] = value;
+//     }
+//     //SCOPE
+//     {
+//         Array<int> tmp = numbers;
+//         Array<int> test(tmp);
+//     }
+
+//     for (int i = 0; i < MAX_VAL; i++) {
+//         if (mirror[i] != numbers[i]) {
+//             std::cerr << "didn't save the same value!!" << std::endl;
+//             return 1;
+//         }
+//     }
+//     try {
+//         numbers[-2] = 0;
+//     }
+//     catch(const std::exception& e) {
+//         std::cerr << e.what() << '\n';
+//     }
+//     try {
+//         numbers[MAX_VAL] = 0;
+//     }
+//     catch(const std::exception& e) {
+//         std::cerr << e.what() << '\n';
+//     }
+
+//     for (int i = 0; i < MAX_VAL; i++) {
+//         numbers[i] = rand();
+//     }
+//     delete [] mirror;//
+//     return 0;
+// }

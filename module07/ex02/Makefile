@@ -6,7 +6,7 @@
 #    By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/11 15:15:18 by gcoqueir          #+#    #+#              #
-#    Updated: 2024/04/11 15:15:19 by gcoqueir         ###   ########.fr        #
+#    Updated: 2024/12/19 17:51:07 by gcoqueir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIBS = ./includes
 OBJ_DIR = objects/
 
 RM = rm -f
-FILES = main.cpp Array.cpp
+FILES = main.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
