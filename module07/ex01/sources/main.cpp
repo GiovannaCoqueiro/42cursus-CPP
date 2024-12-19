@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:14:59 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/06/27 18:54:08 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2024/12/19 15:45:49 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ void printString(std::string const &i) {
 }
 
 int main() {
-	int intArray[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	float floatArray[] = {1.1, 2.2, 3.3, 4.4, 5.5};
-	std::string stringArray[] = {"um", "dois", "três"};
+	int intArray[] = {0, 5, 10, 15, 20, 25, 30, 35, 40, 45};
+	float floatArray[] = {1.5, 2.4, 3.3, 4.2, 5.1};
+	std::string stringArray[] = {"Raze", "Sage", "Viper"};
 
-	std::cout << "intArray:\n";
-	iter<int>(intArray, 10, printInt);
+	std::cout << "Int:\n";
+	iter<int>(intArray, 5, printInt);
 	std::cout << std::endl;
 
-	std::cout << "floatArray:\n";
+	std::cout << "Float:\n";
 	iter<float>(floatArray, 5, printFloat);
 	std::cout << std::endl;
 
-	std::cout << "stringArray:\n";
+	std::cout << "String:\n";
 	iter<std::string>(stringArray, 3, printString);
 	std::cout << std::endl;
 

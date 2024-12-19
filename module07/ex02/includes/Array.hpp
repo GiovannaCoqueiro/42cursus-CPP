@@ -10,32 +10,6 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-// #ifndef ARRAY_HPP
-// #define ARRAY_HPP
-
-// #include <iostream>
-
-// template<typename T>
-// class Array {
-// 	private:
-// 		T* _array;
-// 		unsigned int _size;
-
-// 	public:
-// 		Array();
-// 		Array(unsigned int n);
-// 		Array(const Array& rhs);
-// 		~Array();
-// 		Array& operator=(const Array& rhs);
-// 		Array& operator[](unsigned int i)
-// 			throw(std::out_of_range);
-
-// 		unsigned int size() const;
-// };
-
-// #endif
-
-
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
@@ -46,8 +20,8 @@
 template <typename T>
 class Array {
 private:
-    T* elements;
-    unsigned int length;
+    T* _array;
+    unsigned int _length;
 
 public:
     Array();
