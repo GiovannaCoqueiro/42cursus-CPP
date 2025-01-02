@@ -30,4 +30,6 @@ class MutantStack: public std::stack<T> {
 		iterator end();
 };
 
+#include "MutantStack.tpp"
+
 #endif
