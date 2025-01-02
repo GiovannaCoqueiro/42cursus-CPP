@@ -12,7 +12,7 @@
 
 vpath %.cpp sources
 
-NAME = easyfind
+NAME = mutantstack
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(LIBS) -O3 -g3
@@ -21,7 +21,7 @@ LIBS = ./includes
 OBJ_DIR = objects/
 
 RM = rm -f
-FILES = main.cpp MutantStack.cpp
+FILES = main.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
