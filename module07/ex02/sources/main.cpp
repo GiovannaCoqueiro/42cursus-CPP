@@ -17,11 +17,9 @@
 
 int main() {
     try {
-        // Test default constructor
         Array<int> defaultArray;
         std::cout << "Default array size: " << defaultArray.size() << std::endl;
 
-        // Test constructor with size
         Array<int> intArray(5);
         std::cout << "Array size: " << intArray.size() << std::endl;
         for (unsigned int i = 0; i < intArray.size(); i++) {
@@ -32,14 +30,12 @@ int main() {
             std::cout << "intArray[" << i << "]: " << intArray[i] << std::endl;
         }
 
-        // Test copy constructor
         Array<int> copyArray = intArray;
         std::cout << "Copy array size: " << copyArray.size() << std::endl;
         for (unsigned int i = 0; i < copyArray.size(); i++) {
             std::cout << "copyArray[" << i << "]: " << copyArray[i] << std::endl;
         }
 
-        // Test out of bounds exception
         try {
             std::cout << intArray[10] << std::endl;
         } catch (const std::exception &e) {

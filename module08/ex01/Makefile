@@ -12,7 +12,7 @@
 
 vpath %.cpp sources
 
-NAME = easyfind
+NAME = span
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(LIBS) -O3 -g3

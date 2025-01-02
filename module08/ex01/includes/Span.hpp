@@ -16,40 +16,47 @@
 #include <iostream>
 #include <vector>
 #include <exception>
-#include <cstdlib>
-#include <limits>
+#include <algorithm>
 
 class AddFail: public std::exception {
 	public:
-		virtual const char* what() const throw();
+		const char* what() const throw() {
+			return "Error: cannot add more numbers, Span is full!";
+		}
 };
 
 class LongFail: public std::exception {
 	public:
-		virtual const char* what() const throw();
+		const char* what() const throw() {
+			return "Error: not enough numbers to calculate longest span!";
+		}
 };
 
 class ShortFail: public std::exception {
 	public:
-		virtual const char* what() const throw();
+		const char* what() const throw() {
+			return "Error: not enough numbers to calculate shortest span!";
+		}
 };
 
 class Span {
 	private:
-		std::vector<int>	number;
-		unsigned long	size;
+		std::vector<int> numbers;
+		unsigned int size;
 
 	public:
-		Span(void);
+		Span();
 		Span(unsigned int n);
 		Span(const Span& rhs);
-		~Span(void);
+		~Span();
 		Span& operator=(const Span& rhs);
-		void addNumber(int n) throw (AddFail);
-		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end) throw (AddFail);
-		int shortestSpan(void) throw (ShortFail);
-		int longestSpan(void) throw (LongFail);
-		std::vector<int> getNumber(void);
+
+		std::vector<int> getNumber();
+
+		void addNumber(int n);
+		void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		int shortestSpan();
+		int longestSpan();
 };
 
 #endif

@@ -12,43 +12,46 @@
 
 #include "easyfind.hpp"
 #include <vector>
-#include <deque>
 #include <list>
-#include <deque>
 
 int main() {
-	std::cout << YELLOW << "Testing with vector ========================================" << RESET << std::endl;
-	std::vector<int> v;
-	for (int i = 0; i < 10; i++) {
-		v.push_back(i);
-	}
 	try {
-		std::cout << GREEN << easyfind(v, 5) << RESET << std::endl;
-		std::cout << GREEN << easyfind(v, 11) << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << RED << "Value not found" << RESET << std::endl;
+		std::vector<int> vec;
+		std::cout << "Creating vector: " << std::endl;
+		for (int i = 0; i < 5; i++) {
+			vec.push_back(i);
+			std::cout << i;
+			if (i != 4)
+				std::cout << ", ";
+			else
+				std::cout << std::endl;
+		}
+
+		std::cout << "Searching for 3 in vector" << std::endl;
+		std::cout << "Found: " << easyfind(vec, 3) << std::endl;
+
+		std::cout << "........................." << std::endl;
+
+		std::list<int> lst;
+		std::cout << "Creating list: " << std::endl;
+		for (int i = 0; i < 5; i++) {
+			lst.push_back(i);
+			std::cout << i;
+			if (i != 4)
+				std::cout << ", ";
+			else
+				std::cout << std::endl;
+		}
+
+		std::cout << "Searching for 0 in list" << std::endl;
+		std::cout << "Found: " << easyfind(lst, 0) << std::endl;
+
+		std::cout << "Searching for 5 in list" << std::endl;
+		std::cout << easyfind(lst, 5) << std::endl;
+
+	} catch (const std::exception& e) {
+		std::cerr << e.what() << std::endl;
 	}
-	std::cout << YELLOW << "Testing with list ========================================" << RESET << std::endl;
-	std::list<int> l;
-	for (int i = 0; i < 10; i++) {
-		l.push_back(i);
-	}
-	try {
-		std::cout << GREEN << easyfind(l, 5) << RESET << std::endl;
-		std::cout << GREEN << easyfind(l, 11) << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << RED << "Value not found" << RESET << std::endl;
-	}
-	std::cout << YELLOW << "Testing with deque ========================================" << RESET << std::endl;
-	std::deque<int> d;
-	for (int i = 0; i < 10; i++) {
-		d.push_back(i);
-	}
-	try {
-		std::cout << GREEN << easyfind(d, 5) << RESET << std::endl;
-		std::cout << GREEN << easyfind(d, 11) << RESET << std::endl;
-	} catch (std::exception &e) {
-		std::cout << RED << "Value not found" << RESET << std::endl;
-	}
+
 	return 0;
 }
