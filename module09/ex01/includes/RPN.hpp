@@ -22,6 +22,7 @@
 class RPN {
 	private:
 		std::stack<int> _stack;
+
 	public:
 		RPN(void);
 		RPN(const RPN& rhs);

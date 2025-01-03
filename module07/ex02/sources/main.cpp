@@ -16,36 +16,36 @@
 #include <cstdlib> 
 
 int main() {
-    try {
-        Array<int> defaultArray;
-        std::cout << "Default array size: " << defaultArray.size() << std::endl;
+	try {
+		Array<int> defaultArray;
+		std::cout << "Default array size: " << defaultArray.size() << std::endl;
 
-        Array<int> intArray(5);
-        std::cout << "Array size: " << intArray.size() << std::endl;
-        for (unsigned int i = 0; i < intArray.size(); i++) {
-            intArray[i] = i * 10;
-        }
+		Array<int> intArray(5);
+		std::cout << "Array size: " << intArray.size() << std::endl;
+		for (unsigned int i = 0; i < intArray.size(); i++) {
+			intArray[i] = i * 10;
+		}
 
-        for (unsigned int i = 0; i < intArray.size(); i++) {
-            std::cout << "intArray[" << i << "]: " << intArray[i] << std::endl;
-        }
+		for (unsigned int i = 0; i < intArray.size(); i++) {
+			std::cout << "intArray[" << i << "]: " << intArray[i] << std::endl;
+		}
 
-        Array<int> copyArray = intArray;
-        std::cout << "Copy array size: " << copyArray.size() << std::endl;
-        for (unsigned int i = 0; i < copyArray.size(); i++) {
-            std::cout << "copyArray[" << i << "]: " << copyArray[i] << std::endl;
-        }
+		Array<int> copyArray = intArray;
+		std::cout << "Copy array size: " << copyArray.size() << std::endl;
+		for (unsigned int i = 0; i < copyArray.size(); i++) {
+			std::cout << "copyArray[" << i << "]: " << copyArray[i] << std::endl;
+		}
 
-        try {
-            std::cout << intArray[10] << std::endl;
-        } catch (const std::exception &e) {
-            std::cerr << "Exception caught: " << e.what() << std::endl;
-        }
-    } catch (const std::exception &e) {
-        std::cerr << "Unexpected exception: " << e.what() << std::endl;
-    }
+		try {
+			std::cout << intArray[10] << std::endl;
+		} catch (const std::exception &e) {
+			std::cerr << "Exception caught: " << e.what() << std::endl;
+		}
+	} catch (const std::exception &e) {
+		std::cerr << "Unexpected exception: " << e.what() << std::endl;
+	}
 
-    return 0;
+	return 0;
 }
 
 // #include <Array.hpp>
