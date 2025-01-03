@@ -41,8 +41,8 @@ class ShortFail: public std::exception {
 
 class Span {
 	private:
-		std::vector<int> numbers;
-		unsigned int size;
+		std::vector<int> _numbers;
+		unsigned int _size;
 
 	public:
 		Span();

@@ -12,51 +12,44 @@
 
 #include "BitcoinExchange.hpp"
 
-void execInput(std::string input, BitcoinExchange& exchange) {
-
-	std::ifstream file;
-	std::string line;
-	std::string date;
-	double rate;
-
-	file.open(input.c_str());
-	if (!file.is_open()) {
-		throw std::invalid_argument("File not found");
-	}
-
-	std::getline(file, line);
-	if (line != "date | value") {
-		throw std::invalid_argument("Invalid input format");
-	}
-	
-	while(getline(file, line)) {
-		date = line.substr(0, line.find(" | "));
-		std::istringstream iss(line.substr(line.find(" | ")+3, line.length()));
-		iss >> rate;
-		if (rate > 1000)
-			std::cout << "Error: too large a number" << std::endl;
-		else
-			exchange.printDB(date, rate);
-	}
-}
-
 int main(int argc, char **argv) {
 	if(argc != 2) {
 		std::cout << "Error: could not open file." << std::endl;
 		return 1;
 	}
+
+	std::ifstream filename;
+	std::string file;
+	std::string line;
+	std::string date;
+	double value;
 	BitcoinExchange exchange;
-	try {
-		exchange.readDB();
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+
+	if (exchange.readDataBase("data.csv") == false)
+		return 1;
+
+	file = argv[1];
+	filename.open(file.c_str());
+	if(!filename.is_open()) {
+		std::cerr << "Error: File not found" << std::endl;
 		return 1;
 	}
-	try {
-		execInput(argv[1], exchange);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-		return 1;
+
+	std::getline(filename, line);
+	if(line != "date | value") {
+		std::cerr << "Error: Invalid dB format" << std::endl;
+		return 1;	
 	}
+
+	while(getline(filename, line)) {
+		date = line.substr(0, line.find(" | "));
+		std::istringstream iss(line.substr(line.find(" | ") + 3, line.length()));
+		iss >> value;
+		if (value > 100)
+			std::cout << "Error: too large a number" << std::endl;
+		else
+			exchange.printDataBase(date, value);
+	}
+
 	return 0;
 }

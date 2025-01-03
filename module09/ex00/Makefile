@@ -12,7 +12,7 @@
 
 vpath %.cpp sources
 
-NAME = easyfind
+NAME = btc
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(LIBS) -O3 -g3
@@ -38,7 +38,7 @@ $(NAME): $(addprefix $(OBJ_DIR), $(OBJS))
 	@echo "\033[0;32mSUCCESS!\033[0m"
 
 val: all
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME)
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME) input.txt
 
 clean:
 	@$(RM) $(addprefix $(OBJ_DIR), $(OBJS))

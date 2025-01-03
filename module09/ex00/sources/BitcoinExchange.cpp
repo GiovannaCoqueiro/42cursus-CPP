@@ -12,13 +12,13 @@
 
 #include "BitcoinExchange.hpp"
 
+bool dateCheck(std::string date);
+
 BitcoinExchange::BitcoinExchange() {}
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& rhs) {
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& rhs){
 	*this = rhs;
 }
-
-BitcoinExchange::~BitcoinExchange(void) {}
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 	if(this != &rhs)
@@ -26,77 +26,72 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs) {
 	return *this;
 }
 
-void BitcoinExchange::readDB(void) {
-	
+BitcoinExchange::~BitcoinExchange() {}
+
+double BitcoinExchange::getExchangeValue(std::string date) const {
+	std::map<std::string, double>::const_iterator it = _exchange.lower_bound(date); //searches for the given date or the closest previously date
+	if (it == _exchange.begin() && it->first != date)
+		return 0; //returns 0 when the given date is lower than all of the database dates
+	if (it != _exchange.begin() && it->first != date)
+		return (--it)->second; //returns the closest date, when the given date doesn't exist
+	return it->second;
+}
+
+bool BitcoinExchange::readDataBase(std::string filename) {
 	std::ifstream db;
 	std::string line;
 	double value;
 
-	db.open("./data.csv");
+	db.open(filename.c_str());
 	if(!db.is_open()) {
-		throw std::invalid_argument("File not found");
+		std::cerr << "Error: File not found" << std::endl;
+		return false;
 	}
 
 	std::getline(db, line);
 	if(line != "date,exchange_rate") {
-		throw std::invalid_argument("Invalid dB format");
+		std::cerr << "Error: Invalid dB format" << std::endl;
+		return false;
 	}
 
 	while(getline(db, line)) {
 		std::string date = line.substr(0, line.find(","));
-		std::istringstream iss(line.substr(line.find(",")+1, line.length()));
+		std::istringstream iss(line.substr(line.find(",") + 1, line.length()));
 		iss >> value;
-		createDB(date, value);
+		createDataBase(date, value);
 	}
 
+	return true;
 }
 
-void BitcoinExchange::createDB(std::string date, double value) {
+void BitcoinExchange::createDataBase(std::string date, double value) {
 	_exchange[date] = value;
 }
 
-bool isValidDate(std::string date) {
-	if(date.length() != 10) {
-		return false;
-	}
-	else if(date.substr(4,1) != "-" || date.substr(7,1) != "-") {
-		return false;
-	}
-	else if(date.substr(0,4) < "2000") {
-		return false;
-	}
-	else if(date.substr(5,2) < "01" || date.substr(5,2) > "12") {
-		return false;
-	}
-	else if(date.substr(5,2) == "02" && date.substr(8,2) > "29") {
-		return false;
-	}
-	else if(date.substr(8,2) < "01" || date.substr(8,2) > "31") {
-		return false;
-	}
-	return true;
-}
-void BitcoinExchange::printDB(std::string date, double rate) {
-	if (!isValidDate(date)) {
+void BitcoinExchange::printDataBase(std::string date, double value) {
+	if (!dateCheck(date)) {
 		std::cout << "Error: bad input => " << date << std::endl;
 		return;
 	}
 
-	double result = getValue(date) * rate;
-	
+	double result = getExchangeValue(date) * value;
+
 	if (result < 0)
 		std::cout << "Error: not a positive number." << std::endl;
 	else
 		std::cout << date << " => " << result << std::endl;
 }
 
-double BitcoinExchange::getValue(std::string date) const {
-	std::map<std::string, double>::const_iterator it = _exchange.lower_bound(date);
-	if(it == _exchange.begin() && it->first != date) {
-		return 0;
-	}
-	if(it != _exchange.begin() && it->first != date) {
-		return (--it)->second;
-	}
-	return it->second;
+bool dateCheck(std::string date) {
+	if(date.length() != 10) //invalide date length
+		return false;
+	else if(date.substr(4,1) != "-" || date.substr(7,1) != "-") //invalid date format yyyy-mm-dd
+		return false;
+	else if(date.substr(5,2) < "01" || date.substr(5,2) > "12") //month check
+		return false;
+	else if(date.substr(8,2) < "01" || date.substr(8,2) > "31") //day check
+		return false;
+	else if(date.substr(5,2) == "02" && date.substr(8,2) > "29") //february case
+		return false;
+	return true;
 }
