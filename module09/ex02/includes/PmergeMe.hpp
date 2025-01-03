@@ -21,25 +21,29 @@
 #include <ctime>
 #include <iomanip>
 #include <exception>
+#include <iterator>
 
 class PmergeMe {
 	private:
 		std::vector<int> _intV;
 		std::deque<int> _intD;
 		int _straggler;
+
 	public:
 		bool has_straggler;
-		PmergeMe(void);
+
+		PmergeMe();
 		PmergeMe(const PmergeMe& rhs);
-		~PmergeMe(void);
 		PmergeMe& operator=(const PmergeMe& rhs);
+		~PmergeMe();
+
 		void processInput(char **argv);
-		bool validateInput(void);
+		bool validateInput();
 		void printContainers(clock_t dataManageTime);
 		int catchVecStraggler(std::vector<int> &vec);
 		int catchDeqStraggler(std::deque<int> &deq);
-		std::vector<int> fordSortVec(void);
-		std::deque<int> fordSortDeq(void);
+		std::vector<int> fordSortVec();
+		std::deque<int> fordSortDeq();
 	}
 ;
 
