@@ -12,21 +12,15 @@
 
 #include "Span.hpp"
 
-Span::Span() : _size(0) {
-	std::cout << "Default Span has been constructed." << std::endl;
-}
+Span::Span() : _size(0) {}
 
-Span::Span(unsigned int n) : _size(n) {
-	std::cout << "Span of size " << n << " has been constructed." << std::endl;
-}
+Span::Span(unsigned int n) : _size(n) {}
 
 Span::Span(const Span& rhs) {
 	*this = rhs;
 }
 
-Span::~Span() {
-	std::cout << "Span destroyed." << std::endl;
-}
+Span::~Span() {}
 
 Span& Span::operator=(const Span& rhs) {
 	if (this != &rhs) {

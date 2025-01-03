@@ -12,7 +12,7 @@
 
 vpath %.cpp sources
 
-NAME = easyfind
+NAME = RPN
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I$(LIBS) -O3 -g3
@@ -38,7 +38,16 @@ $(NAME): $(addprefix $(OBJ_DIR), $(OBJS))
 	@echo "\033[0;32mSUCCESS!\033[0m"
 
 val: all
-	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME)
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME) "8 9 * 9 - 9 - 9 - 4 - 1 +"
+
+val2: all
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME) "7 7 * 7 -"
+
+val3: all
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
+
+val4: all
+	@valgrind --quiet --leak-check=full --show-leak-kinds=all ./$(NAME) "(1 + 1)"
 
 clean:
 	@$(RM) $(addprefix $(OBJ_DIR), $(OBJS))

@@ -14,55 +14,73 @@
 
 RPN::RPN() {}
 
-RPN::RPN(const RPN& rhs){
+RPN::RPN(const RPN& rhs) {
 	*this = rhs;
-};
-
-RPN::~RPN(void){};
-
-RPN& RPN::operator=(const RPN& rhs) {
-	static_cast<void>(rhs);
-	return *this;
-};
-
-
-
-static void do_the_math(std::stack<ssize_t>& stack, char op) throw(std::domain_error){
-	ssize_t a, b = 0;
-
-	if(stack.size() < 2)
-		throw std::domain_error("Invalid expression: there are not enough numbers in the stack.");
-	b = stack.top();
-	stack.pop();
-	a = stack.top();
-	stack.pop();
-
-	switch(op) {
-		case '+':
-			stack.push(a + b);
-			break;
-		case '-':
-			stack.push(a - b);
-			break;
-		case '*':
-			stack.push(a * b);
-			break;
-		case '/':
-			b == 0 ? throw std::domain_error("Division by zero") : stack.push(	a / b);
-			break;
-	}
 }
 
-ssize_t RPN::calculate(std::string expr) throw(std::domain_error){
-	std::stack<ssize_t> stack;
-
-	for(std::string::iterator it = expr.begin(); it != expr.end(); it++) {
-		if(isdigit(static_cast<int>(*it)))
-			stack.push(static_cast<int>(*it) - '0');
-		else
-			do_the_math(stack, *it);
+RPN& RPN::operator=(const RPN& rhs) {
+	if (this != &rhs) {
+		_stack = rhs._stack;
 	}
-	if(stack.size() != 1)
-		throw std::domain_error("Invalid expression: there are numbers left in the stack.");
-	return stack.top();
+	return *this;
+}
+
+RPN::~RPN() {}
+
+ssize_t RPN::calculate(const std::string& expr) {
+	std::istringstream iss(expr);
+	std::string token;
+	int a, b = 0;
+
+	while (iss >> token) {
+		if (token == "+" || token == "-" || token == "*" || token == "/") {
+			if (_stack.size() < 2) {
+				std::cerr << "Error" << std::endl;
+				return -1;
+			}
+			b = _stack.top(); _stack.pop();
+			a = _stack.top(); _stack.pop();
+
+			if (token == "+") {
+				_stack.push(a + b);
+			}
+			else if (token == "-") {
+				_stack.push(a - b);
+			}
+			else if (token == "*") {
+				_stack.push(a * b);
+			}
+			else if (token == "/") {
+				if (b == 0) {
+					std::cerr << "Error" << std::endl;
+					return -1;
+				}
+				_stack.push(a / b);
+			}
+		}
+		else {
+			bool is_number = true;
+			for (size_t i = 0; i < token.length(); i++) {
+				if (!std::isdigit(token[i])) {
+					is_number = false;
+					break;
+				}
+			}
+
+			if (is_number && token.length() == 1) {
+				_stack.push(num);
+			}
+			else {
+				std::cerr << "Error" << std::endl;
+				return -1;
+			}
+		}
+	}
+
+	if (_stack.size() != 1) {
+		std::cerr << "Error" << std::endl;
+		return -1;
+	}
+
+	return _stack.top();
 }

@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
 		date = line.substr(0, line.find(" | "));
 		std::istringstream iss(line.substr(line.find(" | ") + 3, line.length()));
 		iss >> value;
-		if (value > 100)
+		if (value > 1000)
 			std::cout << "Error: too large a number" << std::endl;
 		else
 			exchange.printDataBase(date, value);

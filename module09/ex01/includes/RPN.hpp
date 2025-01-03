@@ -18,17 +18,20 @@
 #include <exception>
 #include <cstdlib>
 #include <sstream>
+#include <stdexcept>
+#include <cctype>
 
 class RPN {
 	private:
 		std::stack<int> _stack;
 
 	public:
-		RPN(void);
+		RPN();
 		RPN(const RPN& rhs);
-		~RPN(void);
 		RPN& operator=(const RPN& rhs);
-		ssize_t calculate(std::string expr) throw(std::domain_error);
+		~RPN();
+
+		ssize_t calculate(const std::string& expr);
 };
 
 #endif
