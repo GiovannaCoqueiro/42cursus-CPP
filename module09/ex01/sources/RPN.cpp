@@ -6,7 +6,7 @@
 /*   By: gcoqueir <gcoqueir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 15:14:43 by gcoqueir          #+#    #+#             */
-/*   Updated: 2024/04/11 15:14:44 by gcoqueir         ###   ########.fr       */
+/*   Updated: 2025/01/21 19:12:49 by gcoqueir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,25 @@ ssize_t RPN::calculate(const std::string& expr) {
 				std::cerr << "Error" << std::endl;
 				return -1;
 			}
-			b = _stack.top(); _stack.pop();
-			a = _stack.top(); _stack.pop();
+			b = _stack.top();
+			_stack.pop();
+			a = _stack.top();
+			_stack.pop();
 
 			if (token == "+") {
 				_stack.push(a + b);
-			}
-			else if (token == "-") {
+			} else if (token == "-") {
 				_stack.push(a - b);
-			}
-			else if (token == "*") {
+			} else if (token == "*") {
 				_stack.push(a * b);
-			}
-			else if (token == "/") {
+			} else if (token == "/") {
 				if (b == 0) {
 					std::cerr << "Error" << std::endl;
 					return -1;
 				}
 				_stack.push(a / b);
 			}
-		}
-		else {
+		} else {
 			bool is_number = true;
 			for (size_t i = 0; i < token.length(); i++) {
 				if (!std::isdigit(token[i])) {
@@ -68,9 +66,13 @@ ssize_t RPN::calculate(const std::string& expr) {
 			}
 
 			if (is_number && token.length() == 1) {
+				// Implementação de conversão manual de string para int
+				int num = 0;
+				for (size_t i = 0; i < token.length(); ++i) {
+					num = num * 10 + (token[i] - '0'); // Converte caractere para número
+				}
 				_stack.push(num);
-			}
-			else {
+			} else {
 				std::cerr << "Error" << std::endl;
 				return -1;
 			}
